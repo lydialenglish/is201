@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#ffe0e9, #ffecd1, #fff9b1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff8fab;
+    }
+
+    #riddle-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    button {
+      background-color: #ffd3b6;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffb6b9;
+    }
+
+    #riddle, #answer {
+      font-size: 1.5rem;
+      margin: 15px 0;
+    }
+
+    a {
+      margin-top: 20px;
+      display: block;
+      color: #333;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="riddle-box">
+    <h1>Riddle Me This 🤔</h1>
+    <div id="riddle">Click below to get a riddle!</div>
+    <div id="answer" style="display:none;"></div>
+    <button onclick="generateRiddle()">Get Riddle</button>
+    <button onclick="showAnswer()">Show Answer</button>
+    <a href="scratch.html">← Back to Hobbie Page</a>
+  </div>
+
+  <script>
+    const riddles = [
+      {
+        question: "What has to be broken before you can use it?",
+        answer: "An egg."
+      },
+      {
+        question: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
+        answer: "A candle."
+      },
+      {
+        question: "What month of the year has 28 days?",
+        answer: "All of them."
+      },
+      {
+        question: "What is full of holes but still holds water?",
+        answer: "A sponge."
+      },
+      {
+        question: "What question can you never answer yes to?",
+        answer: "Are you asleep yet?"
+      }
+    ];
+
+    let currentAnswer = "";
+
+    function generateRiddle() {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      const riddle = riddles[randomIndex];
+      document.getElementById("riddle").textContent = riddle.question;
+      document.getElementById("answer").style.display = "none";
+      document.getElementById("answer").textContent = riddle.answer;
+      currentAnswer = riddle.answer;
+    }
+
+    function showAnswer() {
+      if (document.getElementById("answer").textContent) {
+        document.getElementById("answer").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
